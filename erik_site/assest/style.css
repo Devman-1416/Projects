@@ -1,0 +1,19 @@
+.navbar{
+    text-align: center;
+    padding: 20px;
+    background-color: burlywood;
+}
+
+.a-nav{
+    margin: 20px;
+}
+
+.alternate-image{
+    display: flex;
+    justify-content: center;
+    border: 5px black solid;
+}
+
+img {
+    border: 5px black solid;
+}
