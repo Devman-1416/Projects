@@ -21,24 +21,58 @@
           <a class="a-nav" href="projects.html">My Projects</a>
      </div>
 
-     <div class="alternate-image">
-          <img src="assest/img/big.jpg" alt="Big Dino, Im tired bro" width="50" height="50" />
-     </div>
 
-     <ul>
-          <li>
-               <h3>Dino Book</h3>
-          </li>
-          <li>
-               <h3>Side Art</h3>
-          </li>
-          <li>
-               <h3>Raptor Book</h3>
-          </li>
-     </ul>
+<div id="slideshow"></div>
+
+<script>
+     // Thanks Chat GDP
+     const slideshow = document.getElementById("slideshow");
+     const totalImages = 44;
+
+     // Create and add all image tags
+     for (let i = 1; i <= totalImages; i++) {
+          const img = document.createElement("img");
+          const number = i.toString().padStart(2, "0"); // makes 1 => 01
+          img.src = `assest/img/img${number}.jpg`;
+          img.classList.add("slide");
+          if (i === 1) img.classList.add("active"); // first image is shown
+          slideshow.appendChild(img);
+     }
+
+     // Slideshow logic
+     let index = 0;
+     const slides = document.querySelectorAll(".slide");
+
+     setInterval(() => {
+          slides[index].classList.remove("active");
+          index = (index + 1) % slides.length;
+          slides[index].classList.add("active");
+     }, 3000);
+</script>
 
 
 
 </body>
+
+
+<footer>
+<br><br><br><br><br><br><br><br>
+<h2>When be draw drew ye</h2>
+<p>You vexed shy mirth now noise. Talked him people valley add use her depend letter. Allowance too applauded now way
+     something recommend. Mrs age men and trees jokes fancy. Gay pretended engrossed eagerness continued ten. Admitting
+     day him contained unfeeling attention mrs out.</p>
+<p>Arrival entered an if drawing request. How daughters not promotion few knowledge contented. Yet winter law behind
+     number stairs garret excuse. Minuter we natural conduct gravity if pointed oh no. Am immediate unwilling of
+     attempted admitting disposing it. Handsome opinions on am at it ladyship.</p>
+<p>He as compliment unreserved projecting. Between had observe pretend delight for believe. Do newspaper questions
+     consulted sweetness do. Our sportsman his unwilling fulfilled departure law. Now world own total saved above her
+     cause table. Wicket myself her square remark the should far secure sex. Smiling cousins warrant law explain for
+     whether.</p>
+<p>Ladyship it daughter securing procured or am moreover mr. Put sir she exercise vicinity cheerful wondered. Continual
+     say suspicion provision you neglected sir curiosity unwilling. Simplicity end themselves increasing led day
+     sympathize yet. General windows effects not are drawing man garrets. Common indeed garden you his ladies out yet.
+     Preference imprudence contrasted to remarkably in on. Taken now you him trees tears any. Her object giving end
+     sister except oppose.</p>
+</footer>
 
 </html>
