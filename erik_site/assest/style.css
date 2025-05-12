@@ -8,40 +8,94 @@ body {
 
 /* Navigation Bar */
 
-.navbar{
-    text-align: center;
-    padding: 20px;
+    .navbar{
+        text-align: center;
+        padding: 10px;
+        background-color: tan;
 
-}
+        border-bottom-left-radius: 20%;
+        border-bottom-right-radius: 20%;
+        border-top-right-radius: 20%;
+        border-top-left-radius: 20%;
 
-.a-nav{
-    display: inline-block;
-    padding: 10px 15px;
-    background-color: #007BFF;
-    margin: 10px;
-    color: white;
-    text-decoration: none;
-    border-radius: 100px;
-    text-align: center;
-}
+    }
+
+    .a-nav{
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #007BFF;
+        margin: 20px;
+        color: white;
+        text-decoration: none;
+        border-radius: 100px;
+        text-align: center;
+    }
 
 /* Silde Show*/
-#slideshow {
-    border: 10px black solid;
-    width: 400px;
-    height: 400px;
-    margin: 100px auto 0 auto;
-    /* top, left/right, bottom */
-    overflow: hidden;
-    position: relative;
-}
+    #slideshow {
+        border: 5px black solid;
+        width: 600px;
+        height: 600px;
+        margin: 50px auto 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
 
-#slideshow img {
-    width: 100%;
-    height: 100%;
-    display: none;
-}
+    #slideshow img {
+        width: 100%;
+        height: 100%;
+        display: none;
+    }
 
-#slideshow img.active {
-    display: block;
-}
+    #slideshow img.active {
+        display: block;
+    }
+
+
+
+/*Art Display*/
+
+    .gallery {
+        width: min (100px, 100%);
+        margin: 0 auto;
+        columns: 3;
+
+    }
+    .gallery img {
+        width: 100%;
+        border: black solid 2px;
+        display: block;
+        margin-bottom: 1em;
+    }
+
+/* Enhance Image */
+    /* Modal overlay */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 999;
+        padding-top: 60px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    /* Modal image */
+    .modal-content {
+        margin: auto;
+        display: block;
+        max-width: 90%;
+        max-height: 80%;
+    }
+
+    /* Close button */
+    #close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer; }
