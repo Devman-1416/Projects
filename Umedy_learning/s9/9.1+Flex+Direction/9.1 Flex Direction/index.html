@@ -7,13 +7,20 @@
   <title>Flex Direction</title>
   <!-- HINT:
   https://developer.mozilla.org/en-US/docs/Web/CSS/Universal_selectors
-  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators 
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Combinators
   -->
   <style>
     .container {
       color: white;
       border: 5px solid gold;
       display: flex;
+      flex-direction: column;
+      width: 100px;
+
+    }
+
+    .container div {
+      flex-basis: 100px;
     }
 
     /*
@@ -41,7 +48,7 @@ children of the .container class.
     <div class="indigo">Indigo</div>
     <div class="purple">Purple</div>
   </div>
-  
+
 </body>
 
 </html>
