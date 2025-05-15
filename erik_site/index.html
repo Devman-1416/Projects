@@ -36,7 +36,7 @@
      for (let i = 1; i <= totalImages; i++) {
           const img = document.createElement("img");
           const number = i.toString().padStart(2, "0"); // makes 1 => 01
-          img.src = `assest/img/img${number}.jpg`;
+          img.src = `assest/img/dino/img${number}.jpg`;
           img.classList.add("slide");
           if (i === 1) img.classList.add("active"); // first image is shown
           slideshow.appendChild(img);
