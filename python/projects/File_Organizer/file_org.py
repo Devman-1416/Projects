@@ -110,9 +110,6 @@ while True:
 
 
 
-with open("another_file.txt", "a") as file:
-    file.write("This is another file.\n")
-    file.write("It automatically closes the file.\n")
-    print("The File Was made?")
+
 
 print("\n\n-----------Thanks for Using Me Dude!!-------------\n\n")
