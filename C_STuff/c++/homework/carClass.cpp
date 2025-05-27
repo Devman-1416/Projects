@@ -1,5 +1,5 @@
 // Devin Combs
-//Car Class
+// Car Class
 
 
 #include <iomanip>
@@ -7,6 +7,7 @@
 #include <string>
 #include <cmath>
 #include <limits>
+#include <chrono>
 
 class Car {
 	private:
@@ -31,12 +32,12 @@ class Car {
 		}
 		
 	//Accessors
-		int getYear() { return year;}
-		std::string getMake() { return make;}
-		std::string getModel() { return model;}
-		float getSpeed() { return speed;}
-		float getGallons() { return gallons;}
-		bool getEngine() { return engine;}
+		int getYear() { return this->year;}
+		std::string getMake() { return this->make;}
+		std::string getModel() { return this->model;}
+		float getSpeed() { return this->speed;}
+		float getGallons() { return this->gallons;}
+		bool getEngine() { return this->engine;}
 		
 	//Mutators
 		void accelerate()
@@ -59,8 +60,8 @@ class Car {
 
 		}
 		
-		bool startCar() {this->engine = true;}
-		bool shutOff()	{this->engine = false;}
+		void setEngine(bool engine) {this->engine = engine;}
+
 		
 	//Utility Functions
 	void display()
@@ -81,11 +82,14 @@ int main()
 Car car (2015,"Dodge","Journey");
 bool engine = false;
 int choice;
+int turn = 1;
+
+
 	
 while (true)
 {
+	std::cout<<"\n--------------------Turn: "<<turn<<"------------------\n";
 	car.display();
-	
 	std::cout<<"\n-----------Menu--------------\n";
 	std::cout<<"\nStart Car    (1)";
 	std::cout<<"\nTurn off Car (2)";
@@ -108,7 +112,7 @@ while (true)
         	
 			if (car.getSpeed()==0 && car.getGallons() != 0)
 			{
-				car.startCar();
+				car.setEngine(true);
 				std::cout<<"\nEngine Turned On\n";
 			}
 			else std::cout<<"\nCar must be stopped to turn on!";
@@ -118,7 +122,7 @@ while (true)
         	
 			if (car.getSpeed()==0)
 			{
-				car.shutOff();
+				car.setEngine(false);
 				std::cout<<"\nEngine Turned Off\n";
 			}
 			else std::cout<<"\nCar must be stopped to shut off!";
@@ -152,7 +156,7 @@ while (true)
 			if (car.getGallons() == 0) 
 			{
 				std::cout<<"\nOut of Gas!";
-				car.shutOff();
+				car.setEngine(false);
 			}
             break;
             
@@ -181,7 +185,8 @@ while (true)
 		else std::cout<<"\nCar is Stoped";
 	}
         
-	std::cout<<"\n\n\n\n\n";
+    turn++;
+	std::cout<<"\n\n\n";
 }
 	
 

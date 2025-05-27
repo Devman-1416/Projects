@@ -5,9 +5,8 @@ body {
 
         background-color: #ffffff;
 
-        background-color: #e9e9e9;
+        background-color: #b2fbb2a5
 
-        background-color: #333333;
 
         color: #000000;
         /* Ensure text is visible against the background */
@@ -30,6 +29,7 @@ body {
 
         justify-content: center;
         align-items: center;
+        margin-bottom: 10px;
 
     }
     .nav-back{
@@ -48,6 +48,7 @@ body {
         min-width: 80px;
         padding: 10px 10px;
         background-color: #007BFF;
+        border: #000000 solid 2px;
         margin: 20px;
         color: white;
         text-decoration: none;
@@ -81,8 +82,18 @@ body {
 
     .gallery {
         width: min (100px, 100%);
-        margin: 0 auto;
+        margin: 1 auto;
         columns: 3;
+
+        background-color: aliceblue;
+            border: tan solid;
+
+            margin-top: 10px;
+            padding: 75px;
+            min-width: 550px;
+            max-width: 850px;
+
+            border-radius:10%;
 
     }
     .gallery img {
@@ -126,15 +137,22 @@ body {
 
 /*Content  Container*/
 .container {
+
     background-color: aliceblue;
     border: tan solid;
 
-    margin-top: 10px;
-    padding: 75px;
+
+
+
     min-width: 550px;
     max-width: 850px;
 
     border-radius: 10%;
+
+    margin: auto;
+    width: 80%;
+
+    padding: 30px;
 }
 
 .container img {
