@@ -16,6 +16,7 @@ class Student{
 	
 	friend std::ostream& operator<< (std::ostream& out, Student oneStudent);
 	
+	
 	private:
 		std::string firstName;
 		std::string lastName;
@@ -27,6 +28,12 @@ class Student{
 			firstName(firstName), lastName(lastName), grade(grade), totalFee(0) { }
 			
 		double getTotalFee(){return this->totalFee;}
+
+		std::string getLastName () 
+		{
+			return lastName;
+		}
+
 			
 		//Overload
 		
@@ -73,12 +80,24 @@ class Athlete {
 			firstName(firstName), lastName(lastName), sportName(sportName) { }
 			
 		double getFee() {return fee;}
+		
+		std::string getSport() {
+			return sportName;
+		}
+
+		
 			
 		//Operator
 		bool operator== (std::string sportName)
 			{
 				return this->sportName == sportName;
 			}
+			
+		bool operator== (Student student)
+		{
+			return this->lastName == student.getLastName();
+		}
+
 		
 }; // End Class
 
@@ -101,6 +120,7 @@ void displayOneStudents (std::vector<Student> allStudents);
 void displayAthletes (std::vector<Athlete> allAthlete);
 void displayStudentsByGrade(std::vector<Student> allStudents);
 void displayStudentsBySport(std::vector<Athlete> allAthlete);
+void displayByGradeSport(std::vector<Student> allStudents, std::vector<Athlete> allAthlete);
 bool getChoice();
 
 
@@ -109,6 +129,24 @@ int main()
 	
 	std::vector<Student> allStudents;
 	std::vector<Athlete> allAthlete;
+	
+	
+// Sample Students
+allStudents.push_back(Student("Alex", "Johnson", 10));
+allStudents.push_back(Student("Taylor", "Smith", 10));
+allStudents.push_back(Student("Jordan", "Lee", 10));  // Same grade as Alex
+allStudents.push_back(Student("Casey", "Brown", 12));
+allStudents.push_back(Student("Morgan", "Taylor", 11)); // Same grade as Taylor
+
+// Sample Athletes
+allAthlete.push_back(Athlete("Alex", "Johnson", "Esports"));
+allAthlete.push_back(Athlete("Taylor", "Smith", "Soccor"));
+allAthlete.push_back(Athlete("Jordan", "Lee", "Esports")); // Same sport as Alex
+allAthlete.push_back(Athlete("Casey", "Brown", "Soccer"));
+allAthlete.push_back(Athlete("Morgan", "Taylor", "Basketball")); // Same sport as Taylor
+
+	
+	
 	int choice;
 	
 	while (true) 
@@ -140,6 +178,12 @@ int main()
 					break;
 					
 		        case 7:
+		   			 displayByGradeSport(allStudents, allAthlete);
+					break;
+					
+				 case 8:
+				 	std::cout<<"\n\n---------------Program Ended-------------------\n\n";
+					exit(0);
 					break;
 		
 			}
@@ -163,10 +207,11 @@ int displayMenu()
         std::cout << "4: Print a list of students who play sports\n";
         std::cout << "5: Print a list of students by grade\n";
         std::cout << "6: Print a list of students by sport\n";
-        std::cout << "7: Exit program \n\n\tEnter: ";
+        std::cout << "7: Print a list of student by grade and sport\n";
+        std::cout << "8: Exit program \n\n\tEnter: ";
 
-        while (!(std::cin >> choice) || (choice < 1 || choice > 7)) {
-            std::cout << "\nInvalid Menu Option! Enter a 1 - 7: ";
+        while (!(std::cin >> choice) || (choice < 1 || choice > 8)) {
+            std::cout << "\nInvalid Menu Option! Enter a 1 - 8: ";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -303,7 +348,6 @@ void displayStudentsByGrade(std::vector<Student> allStudents)
 
 void displayStudentsBySport(std::vector<Athlete> allAthlete)
 {
-	int grade;
 	bool found = false;
 	std::string sName;
 	
@@ -319,6 +363,59 @@ void displayStudentsBySport(std::vector<Athlete> allAthlete)
     }
  	
     if (!found) std::cout<<"\nNo Students play "<<sName<<"\n\n";
+}
+
+void displayByGradeSport(std::vector<Student> allStudents, std::vector<Athlete> allAthlete)
+{
+	int grade;
+	std::string sName;
+	bool found = false;
+	std::vector<Student> gradeStudents;
+	std::vector<Athlete> sportAthlete;
+	
+	std::cout<<"\n\n-----------Student by Grade and Sports------------\n\n";
+
+	// Get Grade
+	std::cout<<"\nEnter Grade: ";	
+    while (!(std::cin >> grade) || (grade < 9|| grade > 12)) {
+        std::cout << "\nInvalid Grade! Must be 9th - 12th Grade! ";
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
+  
+	for (Student student : allStudents)
+	{
+		if (student == grade) 
+		{
+			gradeStudents.push_back(student);
+
+		}
+    }
+    
+    //Sport Name
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout<<"\nSport Name: ";
+	std::getline(std::cin, sName);
+		
+	for (Athlete athlete : allAthlete)
+	{
+		if (athlete == sName) sportAthlete.push_back(athlete);
+		found = true;
+    }
+ 	
+    if (!found) std::cout<<"\nNo Students play "<<sName<<"\n\n";
+    
+	for (int x=0; x < gradeStudents.size(); x++)
+	{
+		for (int y = 0; y < allAthlete.size(); y++ )
+			if (allAthlete[y] == gradeStudents[x] && allAthlete[y].getSport() == sName)
+			{
+				std::cout<<"Test"<<x<<" "<<allAthlete[y]<<std::endl;
+			}
+	}
+	
+
 }
 
 

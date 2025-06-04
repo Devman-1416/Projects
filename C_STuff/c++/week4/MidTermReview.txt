@@ -1,0 +1,34 @@
+Classes / Objects:
+	constructor
+	accessors
+	mutators
+	utility
+	friends
+	private
+	public
+
+	no Inheritance!
+	no Separate Compilation!
+
+operator Overload // Friends
+vectors / arrays
+Static ( 3 types!! )
+Bool
+Refrences
+Ranged Based For Loop
+Concatination w/ string & numeric data
+Composition
+Initialization List
+Data Validation
+2 - decimale Places
+conditional operator
+strings
+I/O
+
+no Defualt arugments!
+no Constants!
+no Casting!
+no non-class functions!
+
+
+	

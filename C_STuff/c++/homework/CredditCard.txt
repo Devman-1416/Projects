@@ -1,0 +1,76 @@
+Create a class called AccountHolder that contains private data for name, address, city, state and zip.  Additionally, it contains a long int for social security number and an int for credit score.  The AccountHolder class should contain a non-default constructor ONLY that requires and assigns everything except the credit score.  Member functions include a getCreditScore() function that will randomly choose a number between 300 and 850.  This number will be assigned to the creditScore private data AND returned from the function.  This class will also contain a display function that will output the name and address information only.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Create a class called Transaction that contains private data for transaction date (you may use a string for this), description, and amount.  Include a default constructor only.  Member functions include a getAmount() function that will return the amount; an inputTransaction() function that will ask for the date, description and the amount; and a display() function that will display the entire transaction in one line.
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Create a class called CreditCard that contains private data as follows:  long int for account number, an AccountHolder object for customer, double for credit limit, balance, and interest percentage, and a vector of monthly Transaction objects.  Additionally, your class will contain a private field for newAccountNumber that will be given a value of 100200. 
+
+ 
+
+You will have a non-default constructor ONLY that will require all of the customer information as required by the AccountHolder constructor.
+
+ 
+
+In the constructor, you will use the AccountHolder object to get the credit score.  If the credit score is < 580, then you will display a message stating that they have been denied credit, and the account number will be set to 0.  Any other credit score will be approved.  You must tell them that they have been approved and set their account number to the value of the static field for newAccountNumber.  You must then increment the static variable.  Display the users account number, set their balance to zero and call a private member function called determineLimitAndInterest() that will set the credit limit and interest percentage based on the following data:
+
+            Credit Score    Limit                Interest
+
+            800 – 850        $ 20,000          .085
+
+            740 – 799        $ 15,000          .155
+
+            670 – 739        $ 10,000          .225
+
+            580 – 669        $  5,000           .295
+
+Additional member functions include an accessor function (get) to return the account number, and an addTransaction() function that will accept a single Transaction object as a parameter.  You will then use the amount of the transaction to see if they have enough of available credit (creditLimit – balance).  If they do, then you will add the transaction to the vector and add the amount to the balance.  Otherwise, you will tell them that their transaction has been declined. 
+
+A display() function that will display the account number, the current balance and the available credit. 
+
+Lastly, a printStatement() function will print the account number and display the Account Holder and display all of the Transactions in the vector.  Additionally, you must calculate the current interest due using the interest rate and the balance.  Display the total interest due and the total balance due (after adding the interest). 
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+The main() part of the program will contain a displayMenu() function that will have the following choices:
+
+            1) Create an account and apply for a credit card
+
+2) See the balance and available credit for an existing account
+
+            3) Input a transaction
+
+            4) Print all monthly statements
+
+            0) Quit
+
+Additionally, you will write a createAccount() function that will ask the user for their name, address, city, state, zip and then use that information to create a CreditCard object.  This object will then be returned from the function.
+
+The main() function will create a vector of Credit Card objects and display the menu. 
+
+The following are descriptions of what each menu option does:
+
+Create an account and apply for a credit card
+
+Call the createAccount() function and add the returned credit card object to the vector.  You will also need to keep track of how many credit card accounts are created. 
+
+See the balance and available credit for an existing account
+
+Ask the user for the account number.  If the account number matches one of the numbers in the vector, then display the data. 
+
+Input a transaction
+
+Ask the user for the account number.  If the account number matches one of the numbers in the vector, then use the inputTransaction() member function to get the information for a transaction.  Then use the addTransaction() function to add the one transaction.
+
+Print all account holder monthly statements
+
+Use the vector and the printStatement() function to display all of the account statements. 
+
+Quit
+
+            Ends the program.
+
+
+Last modified: Thursday, February 13, 2025, 12:20 PM
