@@ -10,3 +10,5 @@
 
 #Round all numbers printed out to the nearest whole number.
 #Allow the user to select whether they want to submit the weight in either grams or pounds.
+
+# Penny = 2.5g | Nickel = 5.0g | Dime = 2.268g | Quarter = 5.67g
