@@ -19,9 +19,9 @@ class Person
 		
 	public:
 		
-//		Person(std::string fn, std::string ln, std::string add, std::string zip,
-//			 std::string ph)
-//			: fName(fn), lName(ln), address(add), zipcode(zip), phone(ph) {}
+		Person(std::string fn, std::string ln, std::string add, std::string zip,
+			 std::string ph)
+			: fName(fn), lName(ln), address(add), zipcode(zip), phone(ph) {}
 	
 		std::string getFName()  { return fName; }
 		void setFName( std::string fn) { fName = fn; }
@@ -41,7 +41,7 @@ class Person
 		virtual void display()
 		{
 			std::cout<<"\nFirst Name: " + fName + "\nLast Name: " + lName
-			+ "\nAddress: " + address + "Zip Code: " + zipcode
+			+ "\nAddress: " + address + "\nZip Code: " + zipcode
 			+ "\nPhone #: " + phone + "\n";
 		}
 	
@@ -56,9 +56,9 @@ class Employee : public Person
 		
 	public:
 
-//		Employee(std::string fn, std::string ln, std::string add, std::string zip,
-//             std::string ph, std::string ssn, std::string dept)
-//			: Person(fn, ln, add, zip, ph), ss(ssn), department(dept) {}
+		Employee(std::string fn, std::string ln, std::string add, std::string zip,
+             std::string ph, std::string ssn, std::string dept)
+			: Person(fn, ln, add, zip, ph), ss(ssn), department(dept) {}
 		
 		std::string getSS() { return ss; }
 		void setSS(std::string ss) { ss = ss; }
@@ -84,9 +84,9 @@ class Customer : public Person
 		
 	public:
 		
-//		Customer(std::string fn, std::string ln, std::string add, std::string zip, std::string ph,
-//				 std::string dis, std::string mail)
-//			: Person(fn, ln, add, zip, ph), discount(dis), email(mail) {}
+		Customer(std::string fn, std::string ln, std::string add, std::string zip, std::string ph,
+				 std::string dis, std::string mail)
+			: Person(fn, ln, add, zip, ph), discount(dis), email(mail) {}
 		
 		std::string getDiscount() { return discount; }
 		void setDiscount(std::string dis) { discount = dis; }
@@ -106,6 +106,8 @@ class Customer : public Person
 
 int displayMenu();
 void displayAll(Person *person);
+Person *makeEmployee();
+Person *makeCustomer();
 
 int main() 
 {
@@ -119,11 +121,11 @@ int main()
 		{
 			case 1:
 				
-				allPeople.push_back(person = new Employee);
+				allPeople.push_back(makeEmployee());
 				break;
 				
 			case 2:
-				allPeople.push_back(person = new Customer);
+				allPeople.push_back(makeCustomer());
 				break;
 				
 			default:
@@ -132,6 +134,7 @@ int main()
 		
 	} while(choice != 0);
 	
+	std::cout<<"\n---------------------All People---------------------\n";
 	for (Person *person : allPeople)
 	{
 		displayAll(person);
@@ -164,6 +167,66 @@ int displayMenu()
 void displayAll(Person *person)
 {
 	person->display();
+}
+
+Person *makeEmployee()
+{
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string fn, ln, add, zip, ph, ssn, dept;
+	std::cout<<"\n---------------------Add Employee---------------------\n";
+
+    std::cout<<"\nEnter First Name: ";
+    std::getline(std::cin, fn);
+
+    std::cout<<"Enter Last Name: ";
+    std::getline(std::cin, ln);
+
+    std::cout<<"Enter Address: ";
+    std::getline(std::cin, add);
+
+    std::cout<<"Enter Zip Code: ";
+    std::getline(std::cin, zip);
+
+    std::cout<<"Enter Phone: ";
+    std::getline(std::cin, ph);
+
+    std::cout<<"Enter SSN: ";
+    std::getline(std::cin, ssn);
+
+    std::cout<<"Enter Department: ";
+    std::getline(std::cin, dept);
+
+    return new Employee(fn, ln, add, zip, ph, ssn, dept);
+}
+
+Person *makeCustomer()
+{
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::string fn, ln, add, zip, ph, dis, email;
+	std::cout<<"\n---------------------Add Customer---------------------\n";
+
+    std::cout<<"\nEnter First Name: ";
+    std::getline(std::cin, fn);
+
+    std::cout<<"Enter Last Name: ";
+    std::getline(std::cin, ln);
+
+    std::cout<<"Enter Address: ";
+    std::getline(std::cin, add);
+
+    std::cout<<"Enter Zip Code: ";
+    std::getline(std::cin, zip);
+
+    std::cout<<"Enter Phone: ";
+    std::getline(std::cin, ph);
+
+    std::cout<<"Enter Discount: ";
+    std::getline(std::cin, dis);
+
+    std::cout<<"Enter Email: ";
+    std::getline(std::cin, email);
+
+    return new Customer(fn, ln, add, zip, ph, dis, email);
 }
 
 
