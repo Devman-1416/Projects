@@ -2,19 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-# Making a GET request
-r = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
+response = requests.get('https://www.geeksforgeeks.org/python-programming-language/')
 
-# check status code for response received
-# success code - 200
-#print(r)
+# Converts the HTMl into readable structure
+soup = BeautifulSoup(response.content, 'html.parser')
 
-# Parsing the HTML
-soup = BeautifulSoup(r.content, 'html.parser')
-#print(soup.prettify())
-
-
-s = soup.find('div', class_='entry-content')
-content = soup.find_all('p')
-
-print(content)
+print(soup.prettify())
