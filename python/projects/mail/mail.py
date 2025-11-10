@@ -26,7 +26,7 @@ def send_email(rec_email, subject, body):
             server.login(EMAIL_ADDRESS,EMAIL_PASSWORD)
             server.sendmail(EMAIL_ADDRESS,rec_email, msg.as_string())
 
-            print("Email Sent Dude!")
+            print("Your a awsome Dude!!!!!")
 
     except Exception as e:
         print(f"Error Sending Mail: {e}")
